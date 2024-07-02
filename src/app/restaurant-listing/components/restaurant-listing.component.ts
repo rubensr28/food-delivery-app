@@ -35,7 +35,7 @@ export class RestaurantListingComponent {
     return `${randomIndex}.jpg`; // Replace with your image filename pattern
   }
 
-  onButtonClick(id: number | undefined) {
+  onButtonClick(id: number) {
     this.router.navigate(['/food-catalogue', id]);
   }
 

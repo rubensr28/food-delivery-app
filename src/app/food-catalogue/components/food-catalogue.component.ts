@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FoodCataloguePage } from '../../shared/models/FoodCataloguePage';
 import { FoodItem } from '../../shared/models/FoodItem';
 import { FoodItemService } from '../services/food-item.service';
 
+
 @Component({
   selector: 'app-food-catalogue',
   templateUrl: './food-catalogue.component.html',
-  styleUrl: './food-catalogue.component.css'
+  styleUrls: ['./food-catalogue.component.css']
 })
 export class FoodCatalogueComponent {
 
@@ -22,16 +22,25 @@ export class FoodCatalogueComponent {
   }
 
   ngOnInit() {
+
     this.route.paramMap.subscribe(params => {
       this.restaurantId = +params.get('id')!;
     });
+
     this.getFoodItemsByRestaurant(this.restaurantId);
+    
   }
 
-  getFoodItemsByRestaurant(restaurantId: number) {
-    this.foodItemService.getFoodItemsByRestaurant(restaurantId).subscribe(
+  getFoodItemsByRestaurant(restaurant: number) {
+    this.foodItemService.getFoodItemsByRestaurant(restaurant).subscribe(
       data => {
         this.foodItemResponse = data;
+        console.log('data')
+        console.log(data);
+        console.log('data')
+        console.log(this.foodItemResponse);
+        console.log('data')
+        console.log(this.foodItemResponse.foodItemList);
       }
     )
   }
@@ -66,12 +75,15 @@ export class FoodCatalogueComponent {
   onCheckOut() {
     this.foodItemCart;
     this.orderSummary = {
-      foodItemsList: [],
+      foodItemList: [],
       restaurant: null
     }
-    this.orderSummary.foodItemsList = this.foodItemCart;
+    this.orderSummary.foodItemList = this.foodItemCart;
     this.orderSummary.restaurant = this.foodItemResponse.restaurant;
     this.router.navigate(['/orderSummary'], { queryParams: { data: JSON.stringify(this.orderSummary) } });
   }
+
+
+
 
 }
