@@ -2,7 +2,7 @@ import { Restaurant } from "./Restaurant";
 import { FoodItem } from "./FoodItem";
 
 export interface FoodCataloguePage{
-    foodItemList?: FoodItem[];
+    foodItemsList?: FoodItem[];
     restaurant?: Restaurant | null;
 
 }

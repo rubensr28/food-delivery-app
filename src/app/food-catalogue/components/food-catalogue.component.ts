@@ -35,12 +35,6 @@ export class FoodCatalogueComponent {
     this.foodItemService.getFoodItemsByRestaurant(restaurant).subscribe(
       data => {
         this.foodItemResponse = data;
-        console.log('data')
-        console.log(data);
-        console.log('data')
-        console.log(this.foodItemResponse);
-        console.log('data')
-        console.log(this.foodItemResponse.foodItemList);
       }
     )
   }
@@ -75,10 +69,10 @@ export class FoodCatalogueComponent {
   onCheckOut() {
     this.foodItemCart;
     this.orderSummary = {
-      foodItemList: [],
+      foodItemsList: [],
       restaurant: null
     }
-    this.orderSummary.foodItemList = this.foodItemCart;
+    this.orderSummary.foodItemsList = this.foodItemCart;
     this.orderSummary.restaurant = this.foodItemResponse.restaurant;
     this.router.navigate(['/orderSummary'], { queryParams: { data: JSON.stringify(this.orderSummary) } });
   }

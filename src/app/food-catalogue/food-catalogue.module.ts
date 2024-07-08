@@ -5,6 +5,7 @@ import { FoodCatalogueRoutingModule } from './food-catalogue-routing.module';
 import { FoodCatalogueComponent } from './components/food-catalogue.component';
 
 
+
 @NgModule({
   declarations: [
     FoodCatalogueComponent
